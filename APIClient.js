@@ -1,6 +1,6 @@
-import fetch, { Headers } from 'node-fetch';
 import APIResponseError from './errors/APIResponseError.js';
 import NetworkError from './errors/NetworkError.js';
+import getPlatform, { PLATFORM } from './utils/getPlatform';
 
 export const CONTENT_TYPE = {
   JSON: 'application/json',
@@ -26,6 +26,15 @@ export default class APIClient {
     this.contentType = contentType;
     this.headers = new Headers(headers);
     this.payloadSignMethod = payloadSignMethod;
+
+    if (getPlatform() === PLATFORM.NODE) {
+      this.fetch = require('node-fetch');
+      const { Headers } = this.fetch;
+      this.headers = new Headers(headers);
+    } else {
+      this.fetch = fetch;
+      this.headers = new Headers(headers);
+    }
   }
 
   /**
@@ -114,7 +123,7 @@ export default class APIClient {
         }
       }
 
-      response = await fetch(url, {
+      response = await this.fetch(url, {
         method,
         headers: this.headers,
         body : bodyToSend
