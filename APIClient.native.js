@@ -1,5 +1,4 @@
 import BaseAPIClient from './BaseAPIClient';
-import getPlatform, { PLATFORM } from './utils/getPlatform';
 
 export default class APIClient extends BaseAPIClient {
   constructor({
@@ -18,7 +17,7 @@ export default class APIClient extends BaseAPIClient {
       contentType,
       headers,
       payloadSignMethod,
-      fetch: getPlatform() === PLATFORM.NODE ? require('node-fetch') : fetch,
+      fetch: fetch,
     });
   }
 }

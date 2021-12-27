@@ -1,6 +1,6 @@
 {
   "name": "@cmdshepard/api-client",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A base class for writing a robust API client abstraction",
   "main": "index.js",
   "repository": "https://github.com/cmdshepard/APIClient",
