@@ -99,8 +99,11 @@ export default class BaseAPIClient {
     try {
       const url = `${this.host}${path}`;
       let bodyToSend;
+      const headers = this.headers || {};
 
       if (body) {
+        headers['content-type'] = this.contentType;
+
         switch (this.contentType) {
           case CONTENT_TYPE.JSON:
             bodyToSend = JSON.stringify(body);
@@ -117,8 +120,8 @@ export default class BaseAPIClient {
 
       response = await this.fetch(url, {
         method,
-        headers: this.headers,
-        body : bodyToSend
+        headers,
+        body: bodyToSend
       });
     } catch (e) {
       console.error(e);
