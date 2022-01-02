@@ -127,7 +127,10 @@ export default class BaseAPIClient {
 
     if (!response.ok) {
       const status = `${response.status} ${response.statusText}`;
-      throw new APIResponseError(status);
+      throw new APIResponseError(
+        status,
+        await response.text()
+      );
     }
 
     return response.json();
