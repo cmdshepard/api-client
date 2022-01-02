@@ -24,7 +24,7 @@ export default class BaseAPIClient {
   }) {
     this.host = host;
     this.contentType = contentType;
-    this.headers = new Headers(headers);
+    this.headers = headers;
     this.payloadSignMethod = payloadSignMethod;
     this.fetch = fetch;
   }
