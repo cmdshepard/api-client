@@ -136,7 +136,15 @@ export default class BaseAPIClient {
       );
     }
 
-    return response.json();
+    let reponseBody = await response.text();
+
+    try {
+      responseBody = JSON.parse(responseBody);
+    } catch (e) {
+      // no-op
+    }
+
+    return responseBody;
   }
 
 }
