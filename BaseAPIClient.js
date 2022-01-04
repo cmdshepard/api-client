@@ -136,7 +136,7 @@ export default class BaseAPIClient {
       );
     }
 
-    let reponseBody = await response.text();
+    let responseBody = await response.text();
 
     try {
       responseBody = JSON.parse(responseBody);
