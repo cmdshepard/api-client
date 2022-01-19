@@ -1,5 +1,6 @@
-import APIResponseError from './errors/APIResponseError.js';
-import NetworkError from './errors/NetworkError.js';
+import APIResponseError from './errors/APIResponseError.mjs';
+import NetworkError from './errors/NetworkError.mjs';
+import fetch from "node-fetch";
 
 export const CONTENT_TYPE = {
   JSON: 'application/json',
@@ -10,23 +11,17 @@ export default class BaseAPIClient {
 
   static CONTENT_TYPE = CONTENT_TYPE;
 
-  constructor({
-    host,
-    contentType,
-    headers,
-    payloadSignMethod,
-    fetch,
-  } = {
+  constructor(opts = {
     host: '0.0.0.0',
     contentType: CONTENT_TYPE.JSON,
     headers: { accept: CONTENT_TYPE.JSON },
     payloadSignMethod: null,
   }) {
-    this.host = host;
-    this.contentType = contentType;
-    this.headers = headers;
-    this.payloadSignMethod = payloadSignMethod;
-    this.fetch = fetch;
+    this.host = opts.host;
+    this.contentType = opts.contentType;
+    this.headers = opts.headers;
+    this.payloadSignMethod = opts.payloadSignMethod;
+    this.fetch = opts.fetch;
   }
 
   /**
@@ -129,7 +124,13 @@ export default class BaseAPIClient {
         }
       }
 
-      response = await this.fetch(url, {
+      let fetchFn;
+
+      if (this.fetch.then) {
+        fetchFn = (await this.fetch).default;
+      }
+
+      response = await fetchFn(url, {
         method,
         headers,
         body: bodyToSend
