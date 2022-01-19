@@ -1,6 +1,5 @@
 import APIResponseError from './errors/APIResponseError.mjs';
 import NetworkError from './errors/NetworkError.mjs';
-import fetch from "node-fetch";
 
 export const CONTENT_TYPE = {
   JSON: 'application/json',
