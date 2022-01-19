@@ -124,7 +124,7 @@ export default class BaseAPIClient {
         }
       }
 
-      let fetchFn;
+      let fetchFn = this.fetch;
 
       if (this.fetch.then) {
         fetchFn = (await this.fetch).default;
