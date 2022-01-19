@@ -34,7 +34,7 @@ export default class BaseAPIClient {
    * @param headers {?object}
    * @returns {Promise<Object>}
    */
-  get = (path, headers) => this._request({
+  get = (path, headers = undefined) => this._request({
     path,
     headers,
     method: 'GET',
@@ -46,7 +46,7 @@ export default class BaseAPIClient {
    * @param headers {?object}
    * @returns {Promise<Object>}
    */
-  post = (path, body, headers) => this._request({
+  post = (path, body = undefined, headers = undefined) => this._request({
     path,
     body,
     headers,
@@ -59,7 +59,7 @@ export default class BaseAPIClient {
    * @param headers {?object}
    * @returns {Promise<Object>}
    */
-  patch = (path, body, headers) => this._request({
+  patch = (path, body = undefined, headers = undefined) => this._request({
     path,
     body,
     headers,
@@ -72,7 +72,7 @@ export default class BaseAPIClient {
    * @param headers {?object}
    * @returns {Promise<Object>}
    */
-  put = (path, body, headers) => this._request({
+  put = (path, body = undefined, headers = undefined) => this._request({
     path,
     body,
     headers,
@@ -85,7 +85,7 @@ export default class BaseAPIClient {
    * @param headers {?headers}
    * @returns {Promise<Object>}
    */
-  del = (path, body, headers) => this._request({
+  del = (path, body = undefined, headers = undefined) => this._request({
     path,
     body,
     headers,
