@@ -31,54 +31,64 @@ export default class BaseAPIClient {
 
   /**
    * @param path {string}
+   * @param headers {?object}
    * @returns {Promise<Object>}
    */
-  get = path => this._request({
+  get = (path, headers) => this._request({
     path,
+    headers,
     method: 'GET',
   });
 
   /**
    * @param path {string}
    * @param body {?object}
+   * @param headers {?object}
    * @returns {Promise<Object>}
    */
-  post = (path, body) => this._request({
+  post = (path, body, headers) => this._request({
     path,
     body,
+    headers,
     method: 'POST',
   });
 
   /**
    * @param path {string}
    * @param body {?object}
+   * @param headers {?object}
    * @returns {Promise<Object>}
    */
-  patch = (path, body) => this._request({
+  patch = (path, body, headers) => this._request({
     path,
     body,
+    headers,
     method: 'PATCH',
   });
 
   /**
    * @param path {string}
    * @param body {?object}
+   * @param headers {?object}
    * @returns {Promise<Object>}
    */
-  put = (path, body) => this._request({
+  put = (path, body, headers) => this._request({
     path,
     body,
+    headers,
     method: 'PUT',
   });
 
   /**
    * @param path {string}
    * @param body {?object}
+   * @param headers {?headers}
    * @returns {Promise<Object>}
    */
-  del = (path, body) => this._request({
+  del = (path, body, headers) => this._request({
     path,
     body,
+    headers,
     method: 'DELETE',
   });
 
@@ -86,6 +96,7 @@ export default class BaseAPIClient {
    * @param method {'GET' | 'POST' | 'PATCH' | 'PUT' | 'DELETE'}
    * @param path {string}
    * @param body {?object}
+   * @param headers {?object}
    * @returns {Promise<object>}
    * @private
    */
@@ -93,13 +104,13 @@ export default class BaseAPIClient {
     method,
     path,
     body = null,
+    headers = this.headers || {},
   }) {
     let response;
 
     try {
       const url = `${this.host}${path}`;
       let bodyToSend;
-      const headers = this.headers || {};
 
       if (body) {
         headers['content-type'] = this.contentType;
