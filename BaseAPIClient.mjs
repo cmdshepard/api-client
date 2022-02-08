@@ -1,3 +1,4 @@
+import fetchRetry from 'fetch-retry';
 import APIResponseError from './errors/APIResponseError.mjs';
 import NetworkError from './errors/NetworkError.mjs';
 
@@ -21,6 +22,7 @@ export default class BaseAPIClient {
     this.headers = opts.headers;
     this.payloadSignMethod = opts.payloadSignMethod;
     this.fetch = opts.fetch;
+    this.retryOpts = opts.retryOpts || { retries: 0 };
   }
 
   /**
@@ -129,7 +131,8 @@ export default class BaseAPIClient {
         fetchFn = (await this.fetch).default;
       }
 
-      response = await fetchFn(url, {
+      response = await fetchRetry(fetchFn)(url, {
+        ...this.retryOpts,
         method,
         headers,
         body: bodyToSend
