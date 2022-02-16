@@ -1,8 +1,14 @@
 export default class APIResponseError extends Error {
 
-  constructor(status, body) {
-    super(`API Response Error${status ? `: ${status}` : ''}`);
+  /**
+   * @param status {number}
+   * @param statusText {string}
+   * @param body {any}
+   */
+  constructor(status, statusText, body) {
+    super(`API Response Error: ${status} ${statusText || ''}`);
     this.status = status;
+    this.statusText = statusText;
 
     try {
       this.body = JSON.parse(body)
