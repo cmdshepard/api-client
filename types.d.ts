@@ -7,7 +7,7 @@ declare type headers = {
   [key: string]: string
 };
 
-export default class APIClient {
+export class APIClient {
   public static CONTENT_TYPE: CONTENT_TYPE;
 
   constructor(initOpts: {

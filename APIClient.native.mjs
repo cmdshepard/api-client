@@ -1,8 +1,8 @@
 import BaseAPIClient from './BaseAPIClient.mjs';
-export APIResponseError from './errors/APIResponseError.mjs';
-export NetworkError from './errors/NetworkError.mjs';
+import APIResponseError from './errors/APIResponseError.mjs';
+import NetworkError from './errors/NetworkError.mjs';
 
-export default class APIClient extends BaseAPIClient {
+class APIClient extends BaseAPIClient {
   constructor({
     host,
     contentType,
@@ -26,4 +26,8 @@ export default class APIClient extends BaseAPIClient {
   }
 }
 
-
+export default {
+  APIClient,
+  APIResponseError,
+  NetworkError,
+};
