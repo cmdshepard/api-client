@@ -1,6 +1,7 @@
 import fetch from 'cross-fetch';
 import BaseAPIClient from './BaseAPIClient.mjs';
-import getPlatform, { PLATFORM } from './utils/getPlatform.mjs';
+export APIResponseError from './errors/APIResponseError.mjs';
+export NetworkError from './errors/NetworkError.mjs';
 
 export default class APIClient extends BaseAPIClient {
   constructor({

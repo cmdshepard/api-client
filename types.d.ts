@@ -27,3 +27,11 @@ export default class APIClient {
 
   public del(path: string, body?: any, headers?: headers);
 }
+
+export class APIResponseError extends Error {
+  public status: number;
+  public statusText: string;
+  public body: any;
+}
+
+export class NetworkError extends Error {}

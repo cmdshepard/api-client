@@ -1,4 +1,6 @@
 import BaseAPIClient from './BaseAPIClient.mjs';
+export APIResponseError from './errors/APIResponseError.mjs';
+export NetworkError from './errors/NetworkError.mjs';
 
 export default class APIClient extends BaseAPIClient {
   constructor({
@@ -23,3 +25,5 @@ export default class APIClient extends BaseAPIClient {
     });
   }
 }
+
+
