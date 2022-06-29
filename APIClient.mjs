@@ -1,3 +1,4 @@
+import fetch from 'cross-fetch';
 import BaseAPIClient from './BaseAPIClient.mjs';
 import getPlatform, { PLATFORM } from './utils/getPlatform.mjs';
 
@@ -21,7 +22,7 @@ export default class APIClient extends BaseAPIClient {
       headers,
       payloadSignMethod,
       retryOpts,
-      fetch: getPlatform() === PLATFORM.NODE ? import('node-fetch') : fetch,
+      fetch,
     });
   }
 }
