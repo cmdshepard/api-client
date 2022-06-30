@@ -8,7 +8,10 @@ declare type headers = {
 };
 
 export class APIClient {
-  public static CONTENT_TYPE: CONTENT_TYPE;
+  public static CONTENT_TYPE: {
+    JSON: 'application/json',
+    FORM_URL_ENCODED: 'application/x-www-form-urlencoded',
+  };
 
   constructor(initOpts: {
     host?: string;
