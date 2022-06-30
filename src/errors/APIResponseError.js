@@ -1,5 +1,4 @@
-export default class APIResponseError extends Error {
-
+class APIResponseError extends Error {
   /**
    * @param status {number}
    * @param statusText {string}
@@ -16,5 +15,6 @@ export default class APIResponseError extends Error {
       this.body = body;
     }
   }
-
 }
+
+module.exports = APIResponseError;

@@ -1,10 +1,9 @@
 {
   "name": "@cmdshepard/api-client",
-  "version": "2.0.0",
+  "version": "2.0.2",
   "description": "A base class for writing a robust API client abstraction",
-  "main": "./APIClient.mjs",
+  "main": "./src/APIClient.js",
   "types": "./types.d.ts",
-  "react-native": "APIClient",
   "repository": "https://github.com/cmdshepard/api-client",
   "author": "Maz Ahmadi <hello@maziar.io>",
   "license": "MIT",
@@ -14,5 +13,6 @@
   "dependencies": {
     "cross-fetch": "^3.1.5",
     "fetch-retry": "^5.0.1"
-  }
+  },
+  "devDependencies": {}
 }

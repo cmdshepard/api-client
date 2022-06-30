@@ -1,6 +1,6 @@
-import fetchRetry from 'fetch-retry';
-import APIResponseError from './errors/APIResponseError.mjs';
-import NetworkError from './errors/NetworkError.mjs';
+const fetchRetry = require('fetch-retry');
+const APIResponseError = require('./errors/APIResponseError');
+const NetworkError = require('./errors/NetworkError');
 
 export const CONTENT_TYPE = {
   JSON: 'application/json',
@@ -125,13 +125,7 @@ export default class BaseAPIClient {
         }
       }
 
-      let fetchFn = this.fetch;
-
-      if (this.fetch.then) {
-        fetchFn = (await this.fetch).default;
-      }
-
-      response = await fetchRetry(fetchFn)(url, {
+      response = await fetchRetry(this.fetch)(url, {
         ...this.retryOpts,
         method,
         headers,

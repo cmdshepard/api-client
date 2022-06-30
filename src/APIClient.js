@@ -1,6 +1,7 @@
-import BaseAPIClient from './BaseAPIClient.mjs';
-import APIResponseError from './errors/APIResponseError.mjs';
-import NetworkError from './errors/NetworkError.mjs';
+const fetch = require('cross-fetch');
+const BaseAPIClient = require('./BaseAPIClient');
+const APIResponseError = require('./errors/APIResponseError');
+const NetworkError = require('./errors/NetworkError');
 
 class APIClient extends BaseAPIClient {
   constructor({
@@ -14,6 +15,7 @@ class APIClient extends BaseAPIClient {
     contentType: BaseAPIClient.CONTENT_TYPE.JSON,
     headers: { accept: BaseAPIClient.CONTENT_TYPE.JSON },
     payloadSignMethod: null,
+    retryOpts: {},
   }) {
     super({
       host,
@@ -21,12 +23,12 @@ class APIClient extends BaseAPIClient {
       headers,
       payloadSignMethod,
       retryOpts,
-      fetch: fetch,
+      fetch,
     });
   }
 }
 
-export default {
+module.exports = {
   APIClient,
   APIResponseError,
   NetworkError,
