@@ -2,12 +2,12 @@ const fetchRetry = require('fetch-retry');
 const APIResponseError = require('./errors/APIResponseError');
 const NetworkError = require('./errors/NetworkError');
 
-export const CONTENT_TYPE = {
+const CONTENT_TYPE = {
   JSON: 'application/json',
   FORM_URL_ENCODED: 'application/x-www-form-urlencoded',
 };
 
-export default class BaseAPIClient {
+class BaseAPIClient {
 
   static CONTENT_TYPE = CONTENT_TYPE;
 
@@ -156,3 +156,5 @@ export default class BaseAPIClient {
   }
 
 }
+
+module.exports = BaseAPIClient;
