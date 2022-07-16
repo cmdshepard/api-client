@@ -1,10 +1,5 @@
 import type { RequestInitWithRetry } from 'fetch-retry';
 
-declare enum CONTENT_TYPE {
-  JSON = 'application/json',
-  FORM_URL_ENCODED = 'application/x-www-form-urlencoded',
-}
-
 declare type headers = {
   [key: string]: string
 };
@@ -15,12 +10,12 @@ export class APIClient {
     FORM_URL_ENCODED: 'application/x-www-form-urlencoded',
   };
 
-  constructor(initOpts: {
+  constructor(initOpts?: {
     host?: string;
-    contentType?: CONTENT_TYPE;
+    contentType?: 'application/json' | 'application/x-www-form-urlencoded';
     headers?: headers;
     payloadSignMethod?: (body: any) => any;
-    retryOpts: RequestInitWithRetry;
+    retryOpts?: RequestInitWithRetry;
   });
 
   public get(path: string, headers?: headers);
