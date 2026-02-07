@@ -4,6 +4,12 @@
   "description": "A base class for writing a robust API client abstraction",
   "main": "./src/APIClient.js",
   "types": "./types.d.ts",
+  "files": [
+    "src/",
+    "types.d.ts",
+    "README.md",
+    "LICENSE"
+  ],
   "repository": "https://github.com/cmdshepard/api-client",
   "author": "Maz Ahmadi <hello@maziar.io>",
   "license": "MIT",
@@ -14,5 +20,14 @@
     "cross-fetch": "^4.1.0",
     "fetch-retry": "^6.0.0"
   },
-  "packageManager": "yarn@4.12.0"
+  "packageManager": "yarn@4.12.0",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "^4.0.18",
+    "vitest": "^4.0.18"
+  }
 }

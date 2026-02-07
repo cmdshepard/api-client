@@ -18,15 +18,15 @@ export class APIClient {
     retryOpts?: RequestInitRetryParams<typeof fetch>;
   });
 
-  public get(path: string, headers?: headers): Promise<any>;
+  public get<T = any>(path: string, headers?: headers): Promise<T>;
 
-  public post(path: string, body?: any, headers?: headers): Promise<any>;
+  public post<T = any>(path: string, body?: any, headers?: headers): Promise<T>;
 
-  public patch(path: string, body?: any, headers?: headers): Promise<any>;
+  public patch<T = any>(path: string, body?: any, headers?: headers): Promise<T>;
 
-  public put(path: string, body?: any, headers?: headers): Promise<any>;
+  public put<T = any>(path: string, body?: any, headers?: headers): Promise<T>;
 
-  public del(path: string, body?: any, headers?: headers): Promise<any>;
+  public del<T = any>(path: string, body?: any, headers?: headers): Promise<T>;
 }
 
 export class APIResponseError extends Error {
