@@ -164,7 +164,7 @@ const api = new MyAPI('your-token');
 const users = await api.getUsers();
 ```
 
-**Note:** `cross-fetch` works seamlessly in React Native. The library automatically uses the native `fetch` implementation when available, falling back to a polyfill only when necessary.
+**Note:** This library uses the native `fetch` API available in Node.js 18+, browsers, and React Native. No polyfills required!
 
 ### Direct Usage (Not Recommended)
 

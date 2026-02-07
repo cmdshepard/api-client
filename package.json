@@ -14,10 +14,9 @@
   "author": "Maz Ahmadi <hello@maziar.io>",
   "license": "MIT",
   "engines": {
-    "node": ">=13.0.0"
+    "node": ">=20.0.0"
   },
   "dependencies": {
-    "cross-fetch": "^4.1.0",
     "fetch-retry": "^6.0.0"
   },
   "packageManager": "yarn@4.12.0",
