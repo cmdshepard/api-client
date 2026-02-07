@@ -14,5 +14,5 @@
     "cross-fetch": "^3.1.8",
     "fetch-retry": "^5.0.6"
   },
-  "devDependencies": {}
+  "packageManager": "yarn@4.12.0"
 }
