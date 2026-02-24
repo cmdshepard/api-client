@@ -16,12 +16,14 @@ class APIClient {
     contentType: CONTENT_TYPE.JSON,
     headers: { accept: CONTENT_TYPE.JSON },
     payloadSignMethod: null,
+    credentials: undefined,
   }) {
     this.host = opts.host;
     this.contentType = opts.contentType;
     this.headers = opts.headers;
     this.payloadSignMethod = opts.payloadSignMethod;
     this.retryOpts = opts.retryOpts || { retries: 0 };
+    this.credentials = opts.credentials;
   }
 
   /**
@@ -128,7 +130,8 @@ class APIClient {
         ...this.retryOpts,
         method,
         headers,
-        body: bodyToSend
+        body: bodyToSend,
+        credentials: this.credentials,
       });
     } catch (e) {
       console.error(e);

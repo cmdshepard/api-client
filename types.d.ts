@@ -16,6 +16,7 @@ export class APIClient {
     headers?: headers;
     payloadSignMethod?: (body: any) => any;
     retryOpts?: RequestInitRetryParams<typeof fetch>;
+    credentials?: RequestCredentials;
   });
 
   public get<T = any>(path: string, headers?: headers): Promise<T>;
